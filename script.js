@@ -29,7 +29,8 @@ function clearDisplay() {
 
 function calculate() {
     try {
-        display.value = eval(display.value);
+        // Replace problematic eval() with a safer alternative
+        display.value = new Function('return ' + display.value)();
     } catch (error) {
         display.value = 'Error';
     }
